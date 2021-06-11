@@ -1,0 +1,19 @@
+# 进入内核代码目录
+cd linux
+mkdir .out
+cp configs/xxxxxx.config ./.out/.config
+
+make O=./.out CC=/usr/bin/clang olddefconfig
+make O=./.out CC=/usr/bin/clang bzImage # generate .<target>.cmd files
+
+# modules 建议只编译需要看的
+make O=./.out CC=/usr/bin/clang SUBDIRS=arch/x86/kvm
+
+# 如果有objtool报错：Segmentation fault
+# 在对应的目录Makefile里加入：
+# OBJECT_FILES_NON_STANDARD := y
+# 或者
+# OBJECT_FILES_NON_STANDARD_foo.o := y
+
+# 这是 upstream kernel 里的 scripts/ 中的脚本
+gen_compile_commands.py -d ./.out  # generate compile_commands.json
