@@ -17,3 +17,5 @@ make O=./.out CC=/usr/bin/clang SUBDIRS=arch/x86/kvm
 
 # 这是 upstream kernel 里的 scripts/ 中的脚本
 gen_compile_commands.py -d ./.out  # generate compile_commands.json
+
+# clangd配置请参考https://clangd.llvm.org/config
