@@ -60,6 +60,13 @@ augroup END
 let g:vista_default_executive = 'vim_lsp'
 nnoremap <F4> :Vista!!<CR>
 
+" Windows Settings
+nnoremap <leader><Bar> :vsplit<CR>
+nnoremap <leader>- :split<CR>
+
+nnoremap <leader>nu :set nu<CR>
+nnoremap <leader>nn :set nonu<CR>
+
 colorscheme desert
 syntax on
 set nu
