@@ -69,4 +69,13 @@ nnoremap <leader>nn :set nonu<CR>
 
 colorscheme desert
 syntax on
-set nu
+hi Pmenu ctermfg=250 ctermbg=31 guibg=LightGrey
+hi PmenuSel ctermfg=15 ctermbg=247 guibg=White
+
+" go back to last edit line
+if has("autocmd")
+          autocmd BufReadPost *
+              \ if line("'\"") > 0 && line("'\"") <= line("$") |
+              \   exe "normal g`\"" |
+              \ endif
+endif
