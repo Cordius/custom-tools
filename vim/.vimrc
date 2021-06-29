@@ -68,9 +68,14 @@ nnoremap <leader>nu :set nu<CR>
 nnoremap <leader>nn :set nonu<CR>
 
 colorscheme desert
+set t_Co=256
 syntax on
-hi Pmenu ctermfg=250 ctermbg=31 guibg=LightGrey
-hi PmenuSel ctermfg=15 ctermbg=247 guibg=White
+hi Pmenu ctermfg=White ctermbg=4 guibg=LightGrey
+hi PmenuSel ctermfg=White ctermbg=24 guibg=LightBlue
+
+" go to line start/end
+inoremap <C-e> <Esc>A
+inoremap <C-a> <Esc>I
 
 " go back to last edit line
 if has("autocmd")
@@ -79,3 +84,4 @@ if has("autocmd")
               \   exe "normal g`\"" |
               \ endif
 endif
+set incsearch
