@@ -85,3 +85,6 @@ if has("autocmd")
               \ endif
 endif
 set incsearch
+
+"ruler format
+set rulerformat=%60(%=%f\ \ Ln\ %-l,Col\ %-c\ \ %P%)
