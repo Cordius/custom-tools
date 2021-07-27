@@ -68,7 +68,6 @@ nnoremap <leader>nu :set nu<CR>
 nnoremap <leader>nn :set nonu<CR>
 
 colorscheme desert
-set t_Co=256
 syntax on
 hi Pmenu ctermfg=White ctermbg=4 guibg=LightGrey
 hi PmenuSel ctermfg=White ctermbg=24 guibg=LightBlue
@@ -76,6 +75,11 @@ hi PmenuSel ctermfg=White ctermbg=24 guibg=LightBlue
 " go to line start/end
 inoremap <C-e> <Esc>A
 inoremap <C-a> <Esc>I
+
+inoremap <C-L> <Right>
+inoremap <C-H> <Left>
+inoremap <C-J> <Down>
+inoremap <C-K> <Up>
 
 " go back to last edit line
 if has("autocmd")
@@ -88,3 +92,27 @@ set incsearch
 
 "ruler format
 set rulerformat=%60(%=%f\ \ Ln\ %-l,Col\ %-c\ \ %P%)
+
+"show quickfix immediately after quickfix cmd
+augroup quickfix
+        autocmd!
+        autocmd QuickFixCmdPost [^l]* cwindow
+        autocmd QuickFixCmdPost l* lwindow
+augroup END
+
+"netrw
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 10
+let g:netrw_banner = 0
+function! s:close_explorer_buffers()
+    for i in range(1, bufnr('$'))
+        if getbufvar(i, '&filetype') == "netrw"
+            silent exe 'bdelete! ' . i
+            return
+        endif
+    endfor
+    silent exe 'Vexplore'
+endfunction
+nnoremap <F3> :call <sid>close_explorer_buffers()<CR>
