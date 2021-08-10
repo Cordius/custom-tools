@@ -81,6 +81,22 @@ inoremap <C-H> <Left>
 inoremap <C-J> <Down>
 inoremap <C-K> <Up>
 
+func Backspace()
+  if col('.') == 1
+    if line('.')  != 1
+      call setreg('"', [])
+      return  "\<ESC>Dk$p\<S-J>i"
+    else
+      return ""
+    endif
+  else
+    return "\<Left>\<Del>"
+  endif
+endfunc
+
+" If backspace not work, use below map
+inoremap <c-q> <c-r>=Backspace()<CR>
+
 " go back to last edit line
 if has("autocmd")
           autocmd BufReadPost *
