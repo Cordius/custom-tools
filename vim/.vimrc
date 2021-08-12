@@ -56,6 +56,9 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+inoremap <expr> <C-X> pumvisible() ? asyncomplete#cancel_popup() : "\<C-e>"
+
 " Vista Settings
 let g:vista_default_executive = 'vim_lsp'
 nnoremap <F4> :Vista!!<CR>
