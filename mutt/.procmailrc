@@ -1,0 +1,8 @@
+PATH=/bin:/usr/bin:/usr/local/bin
+MAILDIR=$HOME/sandbox/mail
+DEFAULT=$MAILDIR/inbox
+LOGFILE=~/sandbox/mail/procmail.log
+
+:0
+* .* inbox
+default
