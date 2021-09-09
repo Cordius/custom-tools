@@ -1,0 +1,89 @@
+set sendmail="/usr/bin/msmtp"
+set hidden_host                                         # 隐藏 host 细节
+set editor="vim"                                        # 用 vim 作编辑器
+set record="~/sandbox/mail/sent-`date +%Y-%m`"          # 每月发出的信件放在不同的文件里
+set use_from=yes                                        # 让 msmtp 知道用哪个帐号
+set from=xxxx@xxxxx                                     # 缺省地从这个邮箱发邮件
+set realname="xx xxxxx"                                      # 真实姓名
+set envelope_from=yes                                   # 让 mutt 使用 msmtp 的 -f 选项
+set ispell="/usr/local/bin/aspell"                      # 英文拼写检查 aspell
+
+## 建立信箱
+set folder="~/sandbox/mail"                             # 邮箱目录
+set mbox="~/sandbox/mail/inbox"                         # 缺省的邮箱
+set spoolfile="~/sandbox/mail/inbox"                    # 收件箱
+set postponed="~/sandbox/mail/postponed"                # 推迟发送
+set alias_file="~/sandbox/mail/.aliases"                # 别名
+
+## 邮件格式
+my_hdr From: xx xxxxxx <xxxxx@xxxxxxxxxx> # 缺省的发件地址
+my_hdr Reply-To: xx xxxxxx <xxxxx@xxxxxxxxx>     # 缺省的回复地址
+set index_format="| %4C | %Z | %{%b %d} | %-15.15L | %s"
+set folder_format="| %2C | %t %N | %8s | %d | %f"
+macro index G "!fetchmail -a -m 'procmail -d %T'\r"
+macro pager G "!fetchmail -a -m 'procmail -d %T'\r"
+set include                                             # 回信时包含原文
+set indent_str="> "                                     # 回信的引文之前插入符号 >
+
+## Colors
+color normal     white        default
+color attachment yellow       default
+color bold       brightwhite  default
+color underline  default      blue
+color error      brightwhite  default
+color indicator  white        blue
+color message    brightblue   default
+color status     white        default
+color header     brightgreen  default ^From:
+color header     brightcyan   default ^To:
+color header     brightcyan   default ^Reply-To:
+color header     brightcyan   default ^Cc:
+color header     brightred    default ^Subject:
+color body       brightwhite  default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color body       brightblue   default (https?|ftp)://[\-\.,/%~_:?&=\#a-zA-Z0-9]+
+color index      brightyellow default ~N
+
+## Encoding & Chinese
+set ascii_chars=yes
+set charset="utf-8"
+set send_charset="us-ascii:iso-8859-1:gb2312:utf-8"
+set rfc2047_parameters=yes
+charset-hook ^iso-8859-1$ gb2312
+charset-hook !utf-8 gb2312
+charset-hook ^us-ascii$ gb2312
+
+## 监视下面几个邮箱，随时报告新邮件
+set check_new=yes
+set mail_check=10
+set timeout=30
+
+set edit_headers=yes                      # Allow to edit mail header
+set nomark_old                            # Mark unread new mail as old
+set copy                                  # Copy of sent mails
+set beep_new=yes                          # Beep on new mail
+set smart_wrap                            # Disallow new line among words
+set nomarkers                             # Don't display carrier return
+set mime_forward                          # Forward MIME attachment
+set pager_index_lines=4                   # 看信时，在 index 留出多少行显示邮件列表？
+set pager_context=3                       # Display 3 lines of context in pager
+set nostrict_threads                      # Lets have some fuzzy threading
+#set wait_key=yes                         # 外部程序退出时，要求用户按键返回
+set sendmail_wait=-1                      # Don't wait around for sendmail
+set fcc_clear                             # Keep fcc's clear of signatues and encryption
+set nopipe_decode                         # Don't decode messages when piping
+set tilde                                 # 过滤带 ~ 的邮件
+set read_inc=100                          # Read counter ticks every 100 msgs
+set write_inc=100                         # Write counter ticks every 100 msgs
+set noconfirmappend                       # Just append, don't hassle me
+set pager_stop                            # Don't skip msgs on next page
+set resolve=yes                           # 按 "t" 或 "D" 时，自动移动光标到下封信件
+set fast_reply                            # 按 "r" 回信时，直接进入编辑模式
+set quit=yes                              # 退出时，直接退出
+set postpone=ask-no                       # 推迟发送
+set nomove                                # 邮件保留在 $MAIL
+set delete=ask-yes                        # 删除前询问
+ignore x-mailer                           # 忽略 x-mailer 邮件头
+auto_view text/html application/msword    # 让 mutt 自动浏览邮件中 text/html 的那部分
+
+# HTML 是最后的选择
+alternative_order text/enriched text/plain text/html
