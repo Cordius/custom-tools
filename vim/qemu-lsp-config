@@ -1,0 +1,9 @@
+# 提前安装好compiledb
+pip install compiledb
+# build
+mkdir .out
+cd .out
+../configure --cc=/root/.local/share/vim-lsp-settings/servers/clangd/bin/clang --disable-gnutls --disable-nettle --disable-gcrypt --disable-sdl --disable-gtk --disable-vte --disable-cocoa --disable-xen --disable-hax --disable-whpx --disable-spice --disable-bzip2 --disable-virglrenderer --disable-capstone --disable-tpm --disable-dmg --target-list=x86_64-softmmu
+compiledb -n make
+# 复制compile_commands.json到根目录
+mv compile_commands.json ..
