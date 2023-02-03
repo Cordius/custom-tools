@@ -7,7 +7,12 @@ $ <make kernel image>
   
 # make initrd
 ```plaintext
+# for ubuntun/debian
 $ mkinitramfs -o ramdisk.img
+
+# for rpm-based distribution, such as fedora/centos
+$ mkinitrd ramdisk.img
+
 $ echo "add-auto-load-safe-path path/to/linux/scripts/gdb/vmlinux-gdb.py" >> ~/.gdbinit
 ```
 
