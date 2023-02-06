@@ -15,3 +15,6 @@ COPY --from=0 /usr/bin/v2ray-plugin /usr/bin/v2ray-plugin
 ```bash
 docker run -d -e PASSWORD=abcd1234qwer --net=host -e SERVER_PORT=2010 shadowsocks:v2ray
 ```
+# 客户端
+1. 加密方式选择xchacha20-ietf-poly1305
+2. 客户端需要装v2ray插件https://github.com/shadowsocks/v2ray-plugin-android/releases/tag/v1.3.3
