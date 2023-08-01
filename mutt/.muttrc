@@ -20,8 +20,8 @@ my_hdr From: xx xxxxxx <xxxxx@xxxxxxxxxx> # 缺省的发件地址
 my_hdr Reply-To: xx xxxxxx <xxxxx@xxxxxxxxx>     # 缺省的回复地址
 set index_format="| %4C | %Z | %{%b %d} | %-15.15L | %s"
 set folder_format="| %2C | %t %N | %8s | %d | %f"
-macro index G "!fetchmail -a -m 'procmail -d %T'\r"
-macro pager G "!fetchmail -a -m 'procmail -d %T'\r"
+macro index G "!fdm -l fetch\r"
+macro pager G "!fdm -l fetch\r"
 set include                                             # 回信时包含原文
 set indent_str="> "                                     # 回信的引文之前插入符号 >
 
