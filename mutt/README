@@ -1,9 +1,0 @@
-# 安装mutt组件
-apt install mutt fetchmail procmail msmtp
-# 将配置文件放在用户目录下
-cp .muttrc .fetchmailrc .procmailrc .msmtprc ~
-# 创建邮件目录 (更改如下路径时要在配置文件修改对应的路径)
-mkdir ~/sandbox/mail -p
-touch ~/sandbox/mail/fetchmail.log
-# 首次安装后建议先收取所有邮件
-fetchmail -a -v
