@@ -57,6 +57,7 @@ set check_new=yes
 set mail_check=10
 set timeout=30
 
+set sort=threads                          # 以threads形式组织邮件
 set edit_headers=yes                      # Allow to edit mail header
 set nomark_old                            # Mark unread new mail as old
 set copy                                  # Copy of sent mails
