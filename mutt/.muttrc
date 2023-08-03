@@ -10,8 +10,8 @@ set ispell="/usr/local/bin/aspell"                      # 英文拼写检查 asp
 
 ## 建立信箱
 set folder="~/sandbox/mail"                             # 邮箱目录
-set mbox="~/sandbox/mail/inbox"                         # 缺省的邮箱
-set spoolfile="~/sandbox/mail/inbox"                    # 收件箱
+set mbox="~/sandbox/mail/default-inbox"                         # 缺省的邮箱
+set spoolfile="~/sandbox/mail/default-inbox"                    # 收件箱
 set postponed="~/sandbox/mail/postponed"                # 推迟发送
 set alias_file="~/sandbox/mail/.aliases"                # 别名
 
