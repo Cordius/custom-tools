@@ -24,3 +24,13 @@ netsh advfirewall firewall add rule name=”Open Port 22 for WSL2” dir=in acti
 # 删除上述规则
 netsh int portproxy reset all
 ```
+# WSL配置
+保存以下文件到`C:\users\zongyong.wzy\.wslconfig`
+```
+[wsl2]
+memory=4GB # Limits VM memory in WSL 2 to 4 GB
+swap=4GB
+kernelCommandLine=ipv6.disable=1
+nestedVirtualization=true
+```
+参考 https://learn.microsoft.com/zh-cn/windows/wsl/wsl-config
